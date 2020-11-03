@@ -21,6 +21,9 @@ public class SuperArray{
 
   public boolean add(String element){
     int i = 0;
+    if (data[data.length-1] != null){
+      resize();
+    }
     while (i<data.length){
       if (data[i] == null){
         data[i] = element;
@@ -39,6 +42,16 @@ public class SuperArray{
     String temp = data[index];
     data[index] = element;
     return temp;
+  }
+
+  private void resize(){
+    String[] arr = new String[data.length+10];
+    int i = 0;
+    while (i < data.length){
+      arr[i] = data[i];
+      i = i + 1;
+    }
+    data = arr;
   }
 
 
