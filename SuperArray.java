@@ -54,6 +54,26 @@ public class SuperArray{
     data = arr;
   }
 
+  public boolean isEmpty(){
+    int i = 0;
+    boolean result = true;
+    while (i<data.length){
+      if (data[i] != null){
+        result = false;
+        i = 10000;
+      }
+      i = i + 1;
+    }
+    return result;
+  }
 
+  public void clear(){
+    data = new String[10];
+  }
 
+  
+
+  public SuperArray(int initialCapacity){
+    data = new String[initialCapacity];
+  }
 }
