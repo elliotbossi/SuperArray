@@ -46,7 +46,7 @@ public class SuperArray{
   }
 
   private void resize(){
-    String[] arr = new String[data.length+10];
+    String[] arr = new String[data.length+2];
     int i = 0;
     while (i < data.length){
       arr[i] = data[i];
@@ -139,7 +139,7 @@ public class SuperArray{
       x = x + 1;
     }
     int i = index;
-    while (i<data.length-1){
+    while (i < data.length-1){
       arr[i] = data[i+1];
       i = i + 1;
     }
@@ -147,6 +147,26 @@ public class SuperArray{
     return returned;
   }
 
+  public int indexOf(String s){
+    int result = -1;
+    int i = 0;
+    while (i < data.length){
+      if (data[i].equals(s)) {
+        result = i;
+        i = 10000;
+      }
+      i = i + 1;
+    }
+    return result;
+  }
 
-
+  public String[] toArray(){
+    String[] arr = new String[data.length];
+    int i = 0;
+    while (i < data.length){
+      arr[i] = data[i];
+      i = i + 1;
+    }
+    return arr;
+  }
 }
