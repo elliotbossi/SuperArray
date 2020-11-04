@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class SuperArray{
 
   private String[] data;
@@ -71,9 +72,48 @@ public class SuperArray{
     data = new String[10];
   }
 
-  
+  public String toString(){
+    int i = 0;
+    int x = 0;
+    int index = -1;
+    String[] temp = data;
+    while (i < data.length){
+      if (data[i] == null){
+        index = i;
+        i = 10000;
+      }
+      i = i + 1;
+    }
+    if (index == -1){
+      return Arrays.toString(temp);
+    }
+    else {
+      String[] arr = new String[index];
+      while (x<index){
+        arr[x] = data[x];
+        x = x + 1;
+      }
+      return Arrays.toString(arr);
+    }
+  }
+
+  public boolean contains(String s){
+    int i = 0;
+    boolean result = false;
+    while (i<data.length){
+      if (data[i] == s){
+        result = true;
+      }
+      i = i + 1;
+    }
+    return result;
+  }
 
   public SuperArray(int initialCapacity){
     data = new String[initialCapacity];
   }
+
+
+
+
 }
