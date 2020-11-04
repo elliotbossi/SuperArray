@@ -113,6 +113,39 @@ public class SuperArray{
     data = new String[initialCapacity];
   }
 
+  public void add(int index, String element){
+    String[] arr = new String[data.length+1];
+    int x = 0;
+    while (x < index){
+      arr[x] = data[x];
+      x = x + 1;
+    }
+    int i = index;
+    arr[i] = element;
+    i = i + 1;
+    while (i<data.length+1){
+      arr[i] = data[i-1];
+      i = i + 1;
+    }
+    data = arr;
+  }
+
+  public String remove(int index){
+    String returned = data[index];
+    String[] arr = new String[data.length-1];
+    int x = 0;
+    while (x < index){
+      arr[x] = data[x];
+      x = x + 1;
+    }
+    int i = index;
+    while (i<data.length-1){
+      arr[i] = data[i+1];
+      i = i + 1;
+    }
+    data = arr;
+    return returned;
+  }
 
 
 
