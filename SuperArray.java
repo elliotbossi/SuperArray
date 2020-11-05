@@ -6,6 +6,7 @@ public class SuperArray{
 
   public SuperArray(){
     data = new String[10];
+    size = 0;
   }
 
   public int size(){
@@ -70,6 +71,7 @@ public class SuperArray{
 
   public void clear(){
     data = new String[10];
+    size = 0;
   }
 
   public String toString(){
@@ -99,18 +101,18 @@ public class SuperArray{
 
   public boolean contains(String s){
     int i = 0;
-    boolean result = false;
     while (i<data.length){
-      if (data[i] == s){
-        result = true;
+      if ((data[i] != null) && (data[i].equals(s))) {
+        return true;
       }
       i = i + 1;
     }
-    return result;
+    return false;
   }
 
   public SuperArray(int initialCapacity){
     data = new String[initialCapacity];
+    size = 0;
   }
 
   public void add(int index, String element){
@@ -127,30 +129,26 @@ public class SuperArray{
       arr[i] = data[i-1];
       i = i + 1;
     }
+    size = size + 1;
     data = arr;
   }
 
-  public String remove(int index){
+  public String remove(int index) {
     String returned = data[index];
-    String[] arr = new String[data.length-1];
-    int x = 0;
-    while (x < index){
-      arr[x] = data[x];
+    int x = index;
+    while (x < size() - 1){
+      data[x] = data[x+1];
       x = x + 1;
     }
-    int i = index;
-    while (i < data.length-1){
-      arr[i] = data[i+1];
-      i = i + 1;
-    }
-    data = arr;
+    data[size()-1] = null;
+    size = size - 1;
     return returned;
   }
 
   public int indexOf(String s){
     int result = -1;
     int i = 0;
-    while (i < data.length){
+    while (i < size()){
       if (data[i].equals(s)) {
         result = i;
         i = 10000;
@@ -161,9 +159,9 @@ public class SuperArray{
   }
 
   public String[] toArray(){
-    String[] arr = new String[data.length];
+    String[] arr = new String[size()];
     int i = 0;
-    while (i < data.length){
+    while (i < size()){
       arr[i] = data[i];
       i = i + 1;
     }
