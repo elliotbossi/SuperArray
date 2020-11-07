@@ -167,4 +167,29 @@ public class SuperArray{
     }
     return arr;
   }
+
+  public int lastIndexOf(String value){
+    int i = size()-1;
+    while (i>=0){
+      if (data[i].equals(value)){
+        return i;
+      }
+      i = i - 1;
+    }
+    return -1;
+  }
+
+  public boolean equals(SuperArray other){
+    int i = 0;
+    if (size() != other.size()){
+      return false;
+    }
+    while (i < other.size()){
+      if (get(i) != other.get(i)){
+        return false;
+      }
+      i = i + 1;
+    }
+    return true;
+  }
 }
