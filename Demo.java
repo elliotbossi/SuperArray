@@ -21,6 +21,45 @@ public class Demo{
     removeDuplicates(result);
     return result;
   }
+
+  public static SuperArray zip(SuperArray a, SuperArray b){
+    int i = 0;
+    int l = 0;
+    int s = 0;
+    SuperArray result = new SuperArray();
+    if (a.size() > b.size()){
+      i = 0;
+      l = a.size();
+      s = b.size();
+      while (i < s){
+        result.add(a.get(i));
+        result.add(b.get(i));
+        i = i + 1;
+      }
+      i = s;
+      while (i < l){
+        result.add(a.get(i));
+        i = i + 1;
+      }
+    }
+    else {
+      i = 0;
+      l = b.size();
+      s = a.size();
+      while (i < s){
+        result.add(a.get(i));
+        result.add(b.get(i));
+        i = i + 1;
+      }
+      i = s;
+      while (i < l){
+        result.add(b.get(i));
+        i = i + 1;
+      }
+    }
+    return result;
+  }
+
   public static void main(String[]args){
     SuperArray words = new SuperArray();
     //grouped to save vertical space
@@ -45,6 +84,22 @@ public class Demo{
     b.add("2");
     b.add("2");
     b.add("9");
+
+    SuperArray c = new SuperArray();
+    SuperArray d = new SuperArray();
+    d.add("a");
+    d.add("b");
+    d.add("c");
+    d.add("d");
+    d.add("e");
+    d.add("f");
+
+    c.add("0");
+    c.add("1");
+    c.add("2");
+    c.add("3");
+
     System.out.println(findOverlap(a,b));
+    System.out.println(zip(c,d));
     }
 }
